@@ -1,6 +1,3 @@
-// manage cart state in a parent component and pass down via props
-// useref add reset to the cart state that uses useref
-
 import Product from "../Product/Product";
 import { useEffect, useState } from "react";
 import "./ProductList.css";

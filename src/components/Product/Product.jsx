@@ -1,6 +1,8 @@
+import "./Product.css";
+
 function Product({ product, addToCart }) {
 	return (
-		<div>
+		<div className="product">
 			<h2>{product.title}</h2>
 			<img src={product.image} alt={product.title} />
 			<p>{product.description}</p>

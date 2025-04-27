@@ -1,3 +1,5 @@
+import "./Basket.css";
+
 function Basket({
 	item,
 	removeFromCart,

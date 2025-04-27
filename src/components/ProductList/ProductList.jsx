@@ -18,6 +18,8 @@ function ProductList() {
 	const [isBasketopen, setIsBasketOpen] = useState(false);
 	const { theme, setTheme, themetoggle } = useContext(ProductContext);
 	const previousCartRef = useRef([]);
+	const [searchProduct, setSearchProduct] = useState("");
+	const [filteredProducts, setFilteredProducts] = useState([]);
 
 	const resetCart = () => {
 		setCart(previousCartRef.current);
@@ -89,6 +91,17 @@ function ProductList() {
 		}
 	}, [isBasketopen, cart]);
 
+	useEffect(() => {
+		if (searchProduct.trim() === "") {
+			setFilteredProducts(products);
+		} else {
+			const filtered = products.filter((product) =>
+				product.title.toLowerCase().includes(searchProduct.toLowerCase())
+			);
+			setFilteredProducts(filtered);
+		}
+	}, [searchProduct, products]);
+
 	return (
 		<>
 			<div className={theme}>
@@ -97,6 +110,18 @@ function ProductList() {
 					Basket Toggle
 				</button>
 				<button onClick={resetCart}>Reset Cart</button>
+
+				{!isBasketopen && (
+					<div>
+						<input
+							type="text"
+							placeholder="Search productsf"
+							value={searchProduct}
+							onChange={(e) => setSearchProduct(e.target.value)}
+						/>
+					</div>
+				)}
+
 				{isBasketopen ? (
 					<>
 						<div>Total price is:{totalPrice().toFixed(2)}</div>
@@ -114,7 +139,7 @@ function ProductList() {
 					</>
 				) : (
 					<>
-						{products.map((item) => (
+						{filteredProducts.map((item) => (
 							<Product key={item.id} product={item} addToCart={addToCart} />
 						))}
 					</>

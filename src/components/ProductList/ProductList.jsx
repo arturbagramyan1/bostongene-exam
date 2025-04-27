@@ -130,6 +130,7 @@ function ProductList() {
 								totalPrice={totalPrice}
 								increaseQuantity={increaseQuantity}
 								decreaseQuantity={decreaseQuantity}
+								removeFromCart={removeFromCart}
 							/>
 						))}
 					</>

@@ -110,6 +110,7 @@ function ProductList() {
 					Basket Toggle
 				</button>
 				<button onClick={resetCart}>Reset Cart</button>
+				<button onClick={() => clearCart()}>Clear Cart</button>
 
 				{!isBasketopen && (
 					<div>
@@ -129,8 +130,6 @@ function ProductList() {
 							<Basket
 								key={item.id}
 								item={item}
-								removeFromCart={removeFromCart}
-								clearCart={clearCart}
 								totalPrice={totalPrice}
 								increaseQuantity={increaseQuantity}
 								decreaseQuantity={decreaseQuantity}

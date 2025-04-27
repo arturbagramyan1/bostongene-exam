@@ -1,15 +1,8 @@
 import "./Basket.css";
 
-function Basket({
-	item,
-	removeFromCart,
-	increaseQuantity,
-	decreaseQuantity,
-	clearCart = clearCart,
-}) {
+function Basket({ item, increaseQuantity, decreaseQuantity }) {
 	return (
 		<>
-			<button onClick={() => clearCart()}>Clear Cart</button>
 			<div className="basket">
 				<h2>{item.title}</h2>
 				<img src={item.image} alt={item.title} />
